@@ -1,4 +1,4 @@
-package com.thanthu.thread.creation;
+package com.thanthu.thread.creation.runnableinterface;
 
 public class Create {
 
