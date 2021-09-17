@@ -1,6 +1,6 @@
-package com.thanthu.thread.synchronization;
+package com.thanthu.thread.synchronization.issue.fix;
 
-public class SynchronizedFunction {
+public class SynchronizedBlock {
 	public static void main(String[] args) throws InterruptedException {
 		InventoryCounter inventoryCounter = new InventoryCounter();
 		IncrementingThread incrementingThread = new IncrementingThread(inventoryCounter);
@@ -49,24 +49,17 @@ public class SynchronizedFunction {
 
 	private static class InventoryCounter {
 		private int items = 0;
-		private Object lock = new Object();
 
-		public void increment() {
-			synchronized (lock) {
-				items++;
-			}
+		public synchronized void increment() {
+			items++;
 		}
 
 		public synchronized void decrement() {
-			synchronized (lock) {
-				items--;
-			}
+			items--;
 		}
 
 		public synchronized int getItems() {
-			synchronized (lock) {
-				return items;
-			}
+			return items;
 		}
 	}
 }
